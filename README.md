@@ -1,24 +1,24 @@
-# 7RewritingHistoryRysGitTutorial
+# [go back to Content](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
 
-7 Rewriting History Rys Git Tutorial
+# [7 Rewriting History Rys Git Tutorial - Content]()
 
-# 7. [Rewriting History](https://github.com/c4arl0s/RysGitTutorial#7-rewriting-history)
- * [Create the Red Page](https://github.com/c4arl0s/RysGitTutorial#-create-the-red-page)
- * [Create the Yellow Page](https://github.com/c4arl0s/RysGitTutorial#-create-the-yellow-page)
- * [Link and Commit the New Pages](https://github.com/c4arl0s/RysGitTutorial#-link-and-commit-the-new-pages)
- * [Create and commit the Green Page](https://github.com/c4arl0s/RysGitTutorial#-create-and-commit-the-green-page)
- * [Begin an Interactive Rebase](https://github.com/c4arl0s/RysGitTutorial#-begin-an-interactive-rebase)
- * [Undo the Generic Commit](https://github.com/c4arl0s/RysGitTutorial#-undo-the-generic-commit)
- * [Split the Generic Commit](https://github.com/c4arl0s/RysGitTutorial#-split-the-generic-commit)
- * [Remove the last Commit](https://github.com/c4arl0s/RysGitTutorial#-remove-the-last-commit)
- * [Open the Reflog](https://github.com/c4arl0s/RysGitTutorial#-open-the-reflog)
- * [Revive the Lost Commit](https://github.com/c4arl0s/RysGitTutorial#-revive-the-lost-commit)
- * [Filter the Log History](https://github.com/c4arl0s/RysGitTutorial#-filter-the-log-history)
- * [Merge in the Revived Branch](https://github.com/c4arl0s/RysGitTutorial#-merge-in-the-revived-branch)
- * [Conclusion](https://github.com/c4arl0s/RysGitTutorial#-conclusion-5)
- * [Quick Reference](https://github.com/c4arl0s/RysGitTutorial#-quick-reference-3)
+# 7. [Rewriting History]()
+ * [Create the Red Page]()
+ * [Create the Yellow Page]()
+ * [Link and Commit the New Pages]()
+ * [Create and commit the Green Page]()
+ * [Begin an Interactive Rebase]()
+ * [Undo the Generic Commit]()
+ * [Split the Generic Commit]()
+ * [Remove the last Commit]()
+ * [Open the Reflog]()
+ * [Revive the Lost Commit]()
+ * [Filter the Log History]()
+ * [Merge in the Revived Branch]()
+ * [Conclusion]()
+ * [Quick Reference]()
 
-# 7. [Rewriting History](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 7. [Rewriting History - Intro](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
 
 The previuous module on rebasing taught us how to move commits around and perform some basic edits while doing so, but now we are going to really get our hands dirty We Will learn **how to split up commits, revive lost snapshots, and completely rewrite a repository's history to our exact specifications**.
 
