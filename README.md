@@ -1,30 +1,28 @@
-# [go back to Content](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# [go back to Content](https://github.com/c4arl0s/RysGitTutorial#rys-git-tutorial)
 
-# [7 Rewriting History Rys Git Tutorial - Content]()
+# [7 Rewriting History Rys Git Tutorial - Content](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#go-back-to-content)
+ * [Create the Red Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-create-the-red-page)
+ * [Create the Yellow Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-create-the-yellow-page)
+ * [Link and Commit the New Pages](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-link-and-commit-the-new-pages)
+ * [Create and commit the Green Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-create-and-commit-the-green-page)
+ * [Begin an Interactive Rebase](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-begin-an-interactive-rebase)
+ * [Undo the Generic Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-undo-the-generic-commit)
+ * [Split the Generic Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-split-the-generic-commit)
+ * [Remove the last Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-remove-the-last-commit)
+ * [Open the Reflog](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-open-the-reflog)
+ * [Revive the Lost Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-revive-the-lost-commit)
+ * [Filter the Log History](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-filter-the-log-history)
+ * [Merge in the Revived Branch](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-merge-in-the-revived-branch)
+ * [Conclusion](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-conclusion)
+ * [Quick Reference](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-quick-reference)
 
-# 7. [Rewriting History]()
- * [Create the Red Page]()
- * [Create the Yellow Page]()
- * [Link and Commit the New Pages]()
- * [Create and commit the Green Page]()
- * [Begin an Interactive Rebase]()
- * [Undo the Generic Commit]()
- * [Split the Generic Commit]()
- * [Remove the last Commit]()
- * [Open the Reflog]()
- * [Revive the Lost Commit]()
- * [Filter the Log History]()
- * [Merge in the Revived Branch]()
- * [Conclusion]()
- * [Quick Reference]()
-
-# 7. [Rewriting History - Intro](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# [7 Rewriting History Rys Git Tutorial](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 The previuous module on rebasing taught us how to move commits around and perform some basic edits while doing so, but now we are going to really get our hands dirty We Will learn **how to split up commits, revive lost snapshots, and completely rewrite a repository's history to our exact specifications**.
 
 Hopefully, this module will get you much more comfortable with the core Git components, as we will be inspecting and editing the internal makeup of our project.
 
-# 	* [Create the Red Page](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Create the Red Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 First, let's create a new branch and add a few more HTML pages.
 
@@ -61,7 +59,7 @@ Next, create the file **red.html** and add the following content:
 
 We will hold off on committing this page for the moment.
 
-# 	* [Create the Yellow Page](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Create the Yellow Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Create a file called **yellow.html**, which should look like the following.
 
@@ -82,7 +80,7 @@ Create a file called **yellow.html**, which should look like the following.
 </html>
 ```
 
-# 	* [Link and Commit the New Pages](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Link and Commit the New Pages](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Next, We will link both new pages to the home page. Add the following items to the "Navigation" section in index.html
 
@@ -126,7 +124,7 @@ This is an example of a **bad commit**. It perform multiple unrelated tasks, and
 
 This will ensure that your project has a meaningful commit history, which gives you the ability to see exactly when and where a feature was added or a piece of functionality was broken. However, in practice, you will often wind up committing several changes in a single snapshot, since you will not always know what constitutes a **"well-defined"** addition as you are developing a project. Fortunately, Git, lets us go back and fix up these problem commits after the fact.
 
-# 	* [Create and commit the Green Page](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Create and commit the Green Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Let's create one more page before splitting that "bad" commit: Add the following HTML to a file called **green.html**
 
@@ -177,7 +175,7 @@ $ git commit -m "Add green page"
  create mode 100644 green.html
 ```
 
-# 	* [Begin an Interactive Rebase](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Begin an Interactive Rebase](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 The commits introduced in our new-pages branch are:
 
@@ -207,7 +205,7 @@ edit 4a5bfc9 add new HTML Pages
 pick 49fd8bf Add green page
 ```
 
-# 	* [Undo the Generic Commit](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Undo the Generic Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 First, let's take a look at where we are with **git log --oneline**:
 
@@ -232,7 +230,7 @@ You may recall from [Undoing Changes]() that we used **git reset --hard** to und
 
 But, this time we use the **--mixed** flag to preserve the working directory, which contains the changes we want to separate. That is to say, the **HEAD** moved, but the working directory  remained unchanged. Of course, this results in a repository with uncommitted modifications. We now have the opportunity to add the **red.html** and **yellow.html** files to distinct commits.
 
-# 	* [Split the Generic Commit](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Split the Generic Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Let's start with the red page. Since we only want to commit content that involves the red page, we will have to manually go in and remove the yellow page's link from the "Navigation" section. In index.html, change this section to match the following.
 
@@ -376,7 +374,7 @@ e1bc771 add a rainbow to crazy.html
 6a442fc Create index page for the message
 ```
 
-# 	* [Remove the last Commit](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Remove the last Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Next, we are going to **"accidentally"** remove the green page commit so we can learn how to retrieve it via Git's **internal repository data**.
 
@@ -453,7 +451,7 @@ This behavior is slightly different from the reset we used in the interactive re
 The commit that we removed from the branch is now a **dangling commit**. Dangling commits are those that cannot be reached from any branch and are thus in danger of being lost forever.
 
 
-# 	* [Open the Reflog](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Open the Reflog](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Git uses something called the **reflog** to record every change you make to your repository. Let's take a look at what it contains:
 
@@ -575,7 +573,7 @@ The above listing reflects our last few actions. For example, the current HEAD, 
 
 The **reflog** is a **chronological** listing of our history, without regard for the repository's branch structure. This lets us find **dangling commits** that would otherwise be lost from the project history.
 
-# 	* [Revive the Lost Commit](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Revive the Lost Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 At the beginning of each **reflog** entry, you will find a commit ID representing, the HEAD~ after that action. Check out the commit at **HEAD@{2}**, which should be where the rebase added the green page (change the ID below to the ID from your reflog)
 
@@ -618,7 +616,7 @@ We now have a branch that can be merged back into the project:
 
 The above diagram makes it easy to see that the **green-page** branch is a extension of **new-pages**, but how would we figure this out if we weren't drawing out the state of our repository every step of the way ?
 
-# 	* [Filter the Log History](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Filter the Log History](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 To view the differences between branches, we can use Git's log-filtering syntax.
 
@@ -693,7 +691,7 @@ Date:   Tue May 26 18:50:56 2020 -0500
 
 The -n 4 parameter tells Git to show only the last four commits from the current HEAD, making it the equivalent of the HEAD~4..HEAD syntax shown above. Similarly, -n 3, -n 2, and -n 1 would display three, two, and one commit, respectively. This feature becomes very useful once a repository grows beyond one screenful of history.
 
-# 	* [Merge in the Revived Branch](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Merge in the Revived Branch](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 We have revived our lost commit, and now we are ready to merge everything back into the **master** branch. Before we do the merge, let's see exactly what we are merging:
 
@@ -809,7 +807,7 @@ $ git branch -d green-page
 Deleted branch green-page (was d417237).
 ```
 
-# 	* [Conclusion](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Conclusion](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 This module took an in-depth look at rebasing, resetting, and the reflog. We learned how to split old commits into one or more new commits, and how to revive "lost" commits. Hopefully, this has given you a better understanding of the interaction between the working directory, the stage, branches, and commited snapshots. We also explored some new options for displaying our commit history, which will become an important skill as our project grows.
 
@@ -821,7 +819,7 @@ The history is represented by the parent of each commit (designated by arrows), 
 
 We will revisit Git's internal representation of a repository in the final module of his tutorial. But now, we are finally ready to discuss multi-user development, which happens to rely entirely on Git branches.
 
-# 	* [Quick Reference](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Quick Reference](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 ```console
 $ git reflog
@@ -848,7 +846,7 @@ $ git log --stat
 ```
 Include extra information about altered files in the log output.
 
-# 8. [Remotes](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 8. [Remotes](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Simply put, a **remote repository*** is one that is not your own. It can be another Git repository that is on your company's network, the internet, or even your local file system, but the point is that it is a repository distinct from your my-git-repository project.
 
@@ -860,7 +858,7 @@ This means we can adapt our merging and rebasing skills to make Git fantastic co
 
 For several parts of this module, we are going to pretend to be Mary, the graphic designer for our website. Mary's actions are clearly denoted by including her name in the heading of each step.
 
-# 	* [Clone the Repository (Mary)](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Clone the Repository (Mary)](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 First, Mary needs her own copy of the repository to work with. The **Distributed Workflows** module will discuss network-based remotes, but right new we are just going to store them on the local filesystem.
 
@@ -932,7 +930,7 @@ e1bc771 add a rainbow to crazy.html
 1047951 t Add blue an orange html files
 6a442fc Create index page for the message
 ```
-# 	* [Configure The Repository (Mary)](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Configure The Repository (Mary)](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 First off, Mary needs to configure her repository so that we know who contributed what to the project.
 
@@ -974,7 +972,7 @@ $ cat .git/config
 
 Use a text editor to open up the file called **config** in the **.git** directory of Mary's project (you may  need to enable hidden files to see .git). This is where local configurations are stored, and we see Mary's information at the bottom of the file. Note that this overrides the global configuration that we set in **The basics**
 
-# 	* [Start Mary's Day (Mary)](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Start Mary's Day (Mary)](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Today, Mary is going to be working on her bio page, which she should develop in a separate branch:
 
@@ -984,7 +982,7 @@ git checkout -b bio-page
 
 Mary can create and check out branches just like we did in our copy of the project. Her repository is a completely isolated development enviroment, and she can do whatever she wants in her without worrying about what's going on in my git repository. Just as branches are an abstraction for the working directory, the staged snapshot, and a commit history, a repository is an abstraction for branches.
 
-# 	* [Create Mary's Bio Page](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Create Mary's Bio Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Let's complete Mary's biography page. In mary's repository, change about/mary.html to:
 
@@ -1038,7 +1036,7 @@ Date:   Fri Jun 5 11:09:51 2020 -0500
 
 [Check why the email was not changed]()
 
-# 	* [Publish the Bio Page (Mary)](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Publish the Bio Page (Mary)](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Now, we can publish the bio page by merging into the **master** branch:
 
@@ -1092,7 +1090,7 @@ Of course, this results in a fast-forward merge.
 
 Notice that both repositories have normal, local branches - we have not had any interaction between the two repositories, so we don't see any remote branches yet. Before we switch back to my git repository, let's examine Mary's remote connections.
 
-# 	* [View Remote Repositories (Mary)](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [View Remote Repositories (Mary)](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Mary can list the connections she has to other repositories using the following command.
 
@@ -1113,7 +1111,7 @@ origin	/Users/carlossantiagocruz/iOS/RysGitTutorialRepository/ (push)
 
 This shows the full path to our original repository, verifying that **origin** is a remote connection to my git repository. The same path is designated as a **"fetch"** and a **"push"** location. We will see what these means in a moment.
 
-# 	* [Return to Your Repository (you)](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Return to Your Repository (you)](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 OK, we are done being Mary, and we can return to our own repository:
 
@@ -1123,7 +1121,7 @@ $ cd ../RysGitTutorialRepository/
 
 Notice that Mar's bio page is still empty. It is very important to understand that this repository and Mary's repository are completely separate. While she was altering her bio page, we could have been doing all sorts of other things in my git repository. We could have even changed her bio page, which would result in a merge conflict when we try to pull her changes in.
 
-# 	* [Add Mary as a Remote (you)](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Add Mary as a Remote (you)](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Before we can get ahold of Mar's bio page, we need access to her repository. Let's look at our current list of remotes:
 
@@ -1150,7 +1148,7 @@ We can now use **mary** to refer to Mar's repository, which is located at ../Rys
 
 Now that our remote **repositories are setup, we will spend the rest of the module discussing remote **branches**
 
-# 	* [Fetch Mary's Branches (you)](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Fetch Mary's Branches (you)](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 As noted earlier, we can use remote branches to access snapshots from another repository. Let's take a look at our current remote branches with the - flag.]()
 
@@ -1194,7 +1192,7 @@ That is to say, our remote branches are not **direct** links into Mary's reposit
 
 The above figure shows the state of **our** repository. We have access to Mary's snapshot (represented by sqeares) and her branches, even though we don't have a real-time connection to Mary's repository.
 
-# 	* [Check out a Remote Branch](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Check out a Remote Branch](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Let's check out a remote branch to review Mary's changes.
 
@@ -1227,7 +1225,7 @@ This puts us in a **detached** HEAD state, just like we were in when we checked 
 
 We can't continue developing if we are not on a local branch. To build on **mary/master** we either need to merge it into our own local **master** or create another branch. We did the latter in Branches, Part I to build on an old commit and in the previous module to revive a "lost commit, but right now we are just looking at what Mary did, so the **detached** HEAD state does not really affect us.
 
-# 	* [Find Mary's Changes](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Find Mary's Changes](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 We can use the same log-filtering syntax from the previous module to view Mary's changes:
 
@@ -1255,7 +1253,7 @@ $
 
 This will not output anything, since we haven't altered our data-base since Mary cloned it, In other words, our history hasn't **diverged** - **we are just behind by a commit**.
 
-# 	* [Merge Mary's Changes](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Merge Mary's Changes](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 Let's approve Mary's changes and integrate them into our own **master** branch.
 
@@ -1279,7 +1277,7 @@ After the merge, the snapshots from Mary's remote branch become a part of a our 
 
 Notice that we only interacted with Mary's **master** branch, even though we had access to her **bio-page**. If we hadn't been pretending to be Mary, we wouldn't have known what this feature branch was for it or if it was ready to be merged. But, since we've designated **master** as a stable branch for the project, it was safe to integrate those updates (assuming Mary was also aware of this convention).
 
-# 	* [Push a Dummy Branch](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Push a Dummy Branch](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 To complement our **git fetch** command, we will take a brief look at **pushing**. Fetching and pushing are **almost** opposites, in that fetching imports branches, while pushing exports branches to another repository. Let's take a look:
 
@@ -1335,7 +1333,7 @@ $ git branch -d dummy
 Deleted branch dummy (was 49baa6e).
 ```
 
-# 	* [Push a New Tag](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Push a New Tag](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 An important property of **git push** is that it does not automatically push tag associated with a particular branch. Let's examine this by creating a new tag.
 
@@ -1374,7 +1372,7 @@ v1.0
 v2.0
 ```
 
-# 	* [Conclusion](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Conclusion](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 In this module, we learned how remote branches can be used to access content in someone else's repository. The remotes listed in **git remote** are merely bookmarks for a full path to another repository. We used a local path, but as we will soon see, Git can use the SSH protocol to access repositories on another computer.
 
@@ -1384,7 +1382,7 @@ That said, it is important to note that remotes are for **people**, whereas bran
 
 Now that we know how Git shares information between repositories, we can add some more structure to our multi-user development environment. The next module will show you how to set up and access a shared central repository.
 
-# 	* [Quick Reference](https://github.com/c4arl0s/RysGitTutorial#rysgittutorial)
+# 	* [Quick Reference](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
 ```console
 $ git -- clone remothePath
@@ -1433,7 +1431,7 @@ $ git push remoteName branchName
 ```
 Push a local branch to another repository
 
-```consol
+```console
 git push remoteName tagName
 ```
 Push a tag to another repository
