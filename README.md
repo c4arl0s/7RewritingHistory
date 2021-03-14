@@ -36,9 +36,9 @@ $ git branch
   master
 ```
 
-Notice that we created a new branch and check it out in a single step by passing the -b flag to the **git checkout** command.
+Notice that we created a new branch and check it out in a single step by passing the -b flag to the git checkout command.
 
-Next, create the file **red.html** and add the following content:
+Next, create the file red.html and add the following content:
 
 ```html
 <!DOCTYPE html>
@@ -61,7 +61,7 @@ We will hold off on committing this page for the moment.
 
 # 	* [Create the Yellow Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-Create a file called **yellow.html**, which should look like the following.
+Create a file called yellow.html, which should look like the following.
 
 ```html
 <!DOCTYPE html>
@@ -117,16 +117,16 @@ $ git commit -m "add new HTML Pages"
  create mode 100644 yellow.html
 ```
 
-This is an example of a **bad commit**. It perform multiple unrelated tasks, and it has a relatively generic commit message. Thus far, we have not really specified when ti is appropriate to commit changes, but the general rules are essentially the same as for branch creation:
+This is an example of a bad commit. It perform multiple unrelated tasks, and it has a relatively generic commit message. Thus far, we have not really specified when ti is appropriate to commit changes, but the general rules are essentially the same as for branch creation:
 
 1. Commit a snapshot for each significant addition to your project.
 2. Don't commit a snapshot if you cannot come up with a single, specific message for it.
 
-This will ensure that your project has a meaningful commit history, which gives you the ability to see exactly when and where a feature was added or a piece of functionality was broken. However, in practice, you will often wind up committing several changes in a single snapshot, since you will not always know what constitutes a **"well-defined"** addition as you are developing a project. Fortunately, Git, lets us go back and fix up these problem commits after the fact.
+This will ensure that your project has a meaningful commit history, which gives you the ability to see exactly when and where a feature was added or a piece of functionality was broken. However, in practice, you will often wind up committing several changes in a single snapshot, since you will not always know what constitutes a "well-defined" addition as you are developing a project. Fortunately, Git, lets us go back and fix up these problem commits after the fact.
 
 # 	* [Create and commit the Green Page](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-Let's create one more page before splitting that "bad" commit: Add the following HTML to a file called **green.html**
+Let's create one more page before splitting that "bad" commit: Add the following HTML to a file called green.html
 
 ```html
 <!DOCTYPE html>
@@ -192,7 +192,7 @@ XXXXXXX Add yellow page
 XXXXXXX Add red page
 ```
 
-To achieve this, we can use the same interactive rebasing method covered in the previous module, only this time we will actually **create** commits in the middle of the rebasing procedure.
+To achieve this, we can use the same interactive rebasing method covered in the previous module, only this time we will actually create commits in the middle of the rebasing procedure.
 
 ```console
 git rebase -i master
@@ -207,14 +207,14 @@ pick 49fd8bf Add green page
 
 # 	* [Undo the Generic Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-First, let's take a look at where we are with **git log --oneline**:
+First, let's take a look at where we are with git log --oneline:
 
 ```console
 4a5bfc9 (HEAD) add new HTML Pages
 20b9d5d (master) Add link to about section in home page
 ```
 
-When Git encountered the **edit** command in the rebase configuration, it stopped to let us edit the commit. As a result, the green page commit does not appear in our history yet. This should be familiar from the previous module. But instead of **amending** the current commit, we are going to completely remove it:
+When Git encountered the edit command in the rebase configuration, it stopped to let us edit the commit. As a result, the green page commit does not appear in our history yet. This should be familiar from the previous module. But instead of amending the current commit, we are going to completely remove it:
 
 ```console
 $ git reset --mixed HEAD~1
@@ -222,13 +222,13 @@ Unstaged changes after reset:
 M	index.html
 ```
 
-The **git reset** command moves the checked out snapshot to a new commit, and the **HEAD~1** parameter tells it **to reset** to the commit that occurs immediately before the current HEAD (likewise, **HEAD~2** would refer to **second commit before HEAD**). In this particular case, **HEAD~1** happens to coincide with **master**. The effect on our repository can be visualized as:
+The git reset command moves the checked out snapshot to a new commit, and the HEAD~1 parameter tells it to reset to the commit that occurs immediately before the current HEAD (likewise, HEAD~2 would refer to second commit before HEAD). In this particular case, HEAD~1 happens to coincide with master. The effect on our repository can be visualized as:
 
 ![Screen Shot 2020-05-30 at 13 36 49](https://user-images.githubusercontent.com/24994818/83336663-d0bd5400-a27a-11ea-9bd6-28b787c51e19.png)
 
-You may recall from [Undoing Changes]() that we used **git reset --hard** to undo uncommitted changes to our project. The **--hard** flag told Git to make the working directory look exactly like the most recent commit, giving us the intended effect of removing uncommitted changes.
+You may recall from [Undoing Changes]() that we used git reset --hard to undo uncommitted changes to our project. The --hard flag told Git to make the working directory look exactly like the most recent commit, giving us the intended effect of removing uncommitted changes.
 
-But, this time we use the **--mixed** flag to preserve the working directory, which contains the changes we want to separate. That is to say, the **HEAD** moved, but the working directory  remained unchanged. Of course, this results in a repository with uncommitted modifications. We now have the opportunity to add the **red.html** and **yellow.html** files to distinct commits.
+But, this time we use the --mixed flag to preserve the working directory, which contains the changes we want to separate. That is to say, the HEAD moved, but the working directory  remained unchanged. Of course, this results in a repository with uncommitted modifications. We now have the opportunity to add the red.html and yellow.html files to distinct commits.
 
 # 	* [Split the Generic Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
@@ -343,7 +343,7 @@ $ git rebase --continue
 Successfully rebased and updated refs/heads/new-pages.
 ```
 
-To summarize, we removed the **"bad"** commit from the current branch with **git reset**, keeping the contained HTML files intact with the **--mixed** flag. Then, we committed them in separate snapshots with the usual **git add** and **git commit** commands. The point to remember is that during a rebase you can **add**, **delete**, and **edit** commits to your heart's content, and the entire result will be moved to the new base.
+To summarize, we removed the "bad" commit from the current branch with git reset, keeping the contained HTML files intact with the --mixed flag. Then, we committed them in separate snapshots with the usual git add and git commit commands. The point to remember is that during a rebase you can add, delete, and edit commits to your heart's content, and the entire result will be moved to the new base.
 
 let's show
 
@@ -376,7 +376,7 @@ e1bc771 add a rainbow to crazy.html
 
 # 	* [Remove the last Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-Next, we are going to **"accidentally"** remove the green page commit so we can learn how to retrieve it via Git's **internal repository data**.
+Next, we are going to "accidentally" remove the green page commit so we can learn how to retrieve it via Git's internal repository data.
 
 ```console
 $ git log --oneline
@@ -442,18 +442,18 @@ e1bc771 add a rainbow to crazy.html
 6a442fc Create index page for the message
 ```
 
-This moves the checked-out commit backward by one snapshot, along with the **new-pages** pointer. Note that **git status** tells us that we have nothing to commit, since the **--hard** flag obliterated (remove) any changes in the working directory. And of course, the **git log** output shows that the **new-pages** branch no longer contains the green commit.
+This moves the checked-out commit backward by one snapshot, along with the new-pages pointer. Note that git status tells us that we have nothing to commit, since the --hard flag obliterated (remove) any changes in the working directory. And of course, the git log output shows that the new-pages branch no longer contains the green commit.
 
-This behavior is slightly different from the reset we used in the interactive rebase: this time the branch: **this time the branch moved with the new HEAD**. Since we were on (no branch) during the **rebase**, there was no branch tip to move. However, in general, **git reset** is used to move branch tips around and optionally alter the working directory via one of its many flags. (e.g. **--mixed** or **--hard**).
+This behavior is slightly different from the reset we used in the interactive rebase: this time the branch: this time the branch moved with the new HEAD. Since we were on (no branch) during the rebase, there was no branch tip to move. However, in general, git reset is used to move branch tips around and optionally alter the working directory via one of its many flags. (e.g. --mixed or --hard).
 
 ![Screen Shot 2020-05-31 at 18 57 25](https://user-images.githubusercontent.com/24994818/83365813-9afa9700-a370-11ea-8592-0ecb23015250.png)
 
-The commit that we removed from the branch is now a **dangling commit**. Dangling commits are those that cannot be reached from any branch and are thus in danger of being lost forever.
+The commit that we removed from the branch is now a dangling commit. Dangling commits are those that cannot be reached from any branch and are thus in danger of being lost forever.
 
 
 # 	* [Open the Reflog](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-Git uses something called the **reflog** to record every change you make to your repository. Let's take a look at what it contains:
+Git uses something called the reflog to record every change you make to your repository. Let's take a look at what it contains:
 
 ```console
 $ git reflog
@@ -571,11 +571,11 @@ The resulting output should look something like the following. Depending on your
 
 The above listing reflects our last few actions. For example, the current HEAD, denoted by HEAD@{0}, resulted from reseting HEAD to HEAD~1. Four actions ago, the yellow page was applied during our rebase, as shown in HEAD@{3}.
 
-The **reflog** is a **chronological** listing of our history, without regard for the repository's branch structure. This lets us find **dangling commits** that would otherwise be lost from the project history.
+The reflog is a chronological listing of our history, without regard for the repository's branch structure. This lets us find dangling commits that would otherwise be lost from the project history.
 
 # 	* [Revive the Lost Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-At the beginning of each **reflog** entry, you will find a commit ID representing, the HEAD~ after that action. Check out the commit at **HEAD@{2}**, which should be where the rebase added the green page (change the ID below to the ID from your reflog)
+At the beginning of each reflog entry, you will find a commit ID representing, the HEAD~ after that action. Check out the commit at HEAD@{2}, which should be where the rebase added the green page (change the ID below to the ID from your reflog)
 
 ```console
 $ git checkout d417237
@@ -599,7 +599,7 @@ Turn off this advice by setting config variable advice.detachedHead to false
 HEAD is now at d417237 Add green page
 ```
 
-This puts us in a **detached HEAD state**, which means our HEAD is no longer on the tip of a branch. We are actually in the opposite situation as we were in [Undoing Changes]() when we checked our a commit **before** the branch tip. Now, we are looking at a commit **after** the tip of the branch, but we still have a detached **HEAD**:
+This puts us in a detached HEAD state, which means our HEAD is no longer on the tip of a branch. We are actually in the opposite situation as we were in [Undoing Changes]() when we checked our a commit before the branch tip. Now, we are looking at a commit after the tip of the branch, but we still have a detached HEAD:
 
 ![Screen Shot 2020-06-01 at 17 49 41](https://user-images.githubusercontent.com/24994818/83462250-58988f00-a430-11ea-8d1d-c476cb41dcf4.png)
 
@@ -614,7 +614,7 @@ We now have a branch that can be merged back into the project:
 
 ![Screen Shot 2020-06-01 at 17 53 28](https://user-images.githubusercontent.com/24994818/83462430-d197e680-a430-11ea-815e-202f989519fc.png)
 
-The above diagram makes it easy to see that the **green-page** branch is a extension of **new-pages**, but how would we figure this out if we weren't drawing out the state of our repository every step of the way ?
+The above diagram makes it easy to see that the green-page branch is a extension of new-pages, but how would we figure this out if we weren't drawing out the state of our repository every step of the way ?
 
 # 	* [Filter the Log History](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
@@ -629,9 +629,9 @@ Date:   Sat May 30 13:19:55 2020 -0500
     Add green page
 ```
 
-This will display all commits contained in **green-page** that are not in the **new-pages** branch. The above command tells us the **green-page** contains one more snapshot than **new-pages**: our dangling commit (although, it is not really dangling any more since we created a branch for it).
+This will display all commits contained in green-page that are not in the new-pages branch. The above command tells us the green-page contains one more snapshot than new-pages: our dangling commit (although, it is not really dangling any more since we created a branch for it).
 
-You can also use this syntax to limit the output of **git log**. For example, to display the ast 4 commits on the current branch, you could use.
+You can also use this syntax to limit the output of git log. For example, to display the ast 4 commits on the current branch, you could use.
 
 ```console
 $ git log HEAD~4..HEAD
@@ -693,7 +693,7 @@ The -n 4 parameter tells Git to show only the last four commits from the current
 
 # 	* [Merge in the Revived Branch](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-We have revived our lost commit, and now we are ready to merge everything back into the **master** branch. Before we do the merge, let's see exactly what we are merging:
+We have revived our lost commit, and now we are ready to merge everything back into the master branch. Before we do the merge, let's see exactly what we are merging:
 
 ```console
 $ git checkout master
@@ -733,7 +733,7 @@ Date:   Sat May 30 17:43:00 2020 -0500
  2 files changed, 18 insertions(+), 1 deletion(-)
 ```
 
-The **$ git log HEAD..green-page** command shows us only those commits in **green-page** that are not in **master** (since master is the current branch, we can refer to it as HEAD). The new **--stat** flag includes information about which files have been changed in each commit. For example, the most recent commit tells us that 14 lines were added to the **green.html** file and 3 lines were added to **index.html**:
+The $ git log HEAD..green-page command shows us only those commits in green-page that are not in master (since master is the current branch, we can refer to it as HEAD). The new --stat flag includes information about which files have been changed in each commit. For example, the most recent commit tells us that 14 lines were added to the green.html file and 3 lines were added to index.html:
 
 ```c
 commit d41723777cff192f4b4453fe6115a997e3aeb1a5
@@ -793,7 +793,7 @@ e1bc771 add a rainbow to crazy.html
 6a442fc Create index page for the message
 ```
 
-Note that the green-page branch already contains all the history of **new-pages**, which is why we merged the former instead of the latter. It this was not the case, Git would complain when we try to run the following command:
+Note that the green-page branch already contains all the history of new-pages, which is why we merged the former instead of the latter. It this was not the case, Git would complain when we try to run the following command:
 
 ```console
 $ git branch -d new-pages
@@ -811,7 +811,7 @@ Deleted branch green-page (was d417237).
 
 This module took an in-depth look at rebasing, resetting, and the reflog. We learned how to split old commits into one or more new commits, and how to revive "lost" commits. Hopefully, this has given you a better understanding of the interaction between the working directory, the stage, branches, and commited snapshots. We also explored some new options for displaying our commit history, which will become an important skill as our project grows.
 
-WE did a lot of work with the branch tips this module. It is important to realize that Git uses the tip of a branch to represent **entire branch**. That is to say, a branch is actually a pointer to a single commit- not a containter for a series of commits. This idea has been implicitly reflected in our diagrams:
+WE did a lot of work with the branch tips this module. It is important to realize that Git uses the tip of a branch to represent entire branch. That is to say, a branch is actually a pointer to a single commit- not a containter for a series of commits. This idea has been implicitly reflected in our diagrams:
 
 ![Screen Shot 2020-06-02 at 13 45 55](https://user-images.githubusercontent.com/24994818/83557547-740aa500-a4d7-11ea-8458-145596a4191d.png)
 
