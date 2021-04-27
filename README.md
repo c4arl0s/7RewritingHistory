@@ -16,9 +16,13 @@
  * [Conclusion](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-conclusion)
  * [Quick Reference](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#-quick-reference)
 
+# [Own Experiences using](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
+
+1. [Revive the lost commit](https://github.com/c4arl0s/7RewritingHistory#1-revive-the-lost-commit)
+
 # [7 Rewriting History Rys Git Tutorial](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-The previuous module on rebasing taught us how to move commits around and perform some basic edits while doing so, but now we are going to really get our hands dirty We Will learn **how to split up commits, revive lost snapshots, and completely rewrite a repository's history to our exact specifications**.
+**The previuous module on rebasing taught us how to move commits around and perform some basic edits while doing so, but now we are going to really get our hands dirty We Will learn how to split up commits, revive lost snapshots, and completely rewrite a repository's history to our exact specifications**.
 
 Hopefully, this module will get you much more comfortable with the core Git components, as we will be inspecting and editing the internal makeup of our project.
 
@@ -192,7 +196,7 @@ XXXXXXX Add yellow page
 XXXXXXX Add red page
 ```
 
-To achieve this, we can use the same interactive rebasing method covered in the previous module, only this time we will actually create commits in the middle of the rebasing procedure.
+**To achieve this, we can use the same interactive rebasing method covered in the previous module, only this time we will actually create commits in the middle of the rebasing procedure**.
 
 ```console
 git rebase -i master
@@ -214,7 +218,7 @@ First, let's take a look at where we are with git log --oneline:
 20b9d5d (master) Add link to about section in home page
 ```
 
-When Git encountered the edit command in the rebase configuration, it stopped to let us edit the commit. As a result, the green page commit does not appear in our history yet. This should be familiar from the previous module. But instead of amending the current commit, we are going to completely remove it:
+**When Git encountered the edit command in the rebase configuration, it stopped to let us edit the commit**. As a result, the green page commit does not appear in our history yet. This should be familiar from the previous module. But instead of amending the current commit, we are going to completely remove it:
 
 ```console
 $ git reset --mixed HEAD~1
@@ -222,7 +226,7 @@ Unstaged changes after reset:
 M	index.html
 ```
 
-The git reset command moves the checked out snapshot to a new commit, and the HEAD~1 parameter tells it to reset to the commit that occurs immediately before the current HEAD (likewise, HEAD~2 would refer to second commit before HEAD). In this particular case, HEAD~1 happens to coincide with master. The effect on our repository can be visualized as:
+**The git reset command moves the checked out snapshot to a new commit, and the `HEAD~1` parameter tells it to reset to the commit that occurs immediately before the current HEAD (likewise, HEAD~2 would refer to second commit before HEAD)**. In this particular case, HEAD~1 happens to coincide with master. The effect on our repository can be visualized as:
 
 ![Screen Shot 2020-05-30 at 13 36 49](https://user-images.githubusercontent.com/24994818/83336663-d0bd5400-a27a-11ea-9bd6-28b787c51e19.png)
 
@@ -343,7 +347,7 @@ $ git rebase --continue
 Successfully rebased and updated refs/heads/new-pages.
 ```
 
-To summarize, we removed the "bad" commit from the current branch with git reset, keeping the contained HTML files intact with the --mixed flag. Then, we committed them in separate snapshots with the usual git add and git commit commands. The point to remember is that during a rebase you can add, delete, and edit commits to your heart's content, and the entire result will be moved to the new base.
+**To summarize, we removed the "bad" commit from the current branch with git reset, keeping the contained HTML files intact with the --mixed flag**. Then, we committed them in separate snapshots with the usual git add and git commit commands. The point to remember is that during a rebase you can add, delete, and edit commits to your heart's content, and the entire result will be moved to the new base.
 
 let's show
 
@@ -376,7 +380,7 @@ e1bc771 add a rainbow to crazy.html
 
 # 	* [Remove the last Commit](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
 
-Next, we are going to "accidentally" remove the green page commit so we can learn how to retrieve it via Git's internal repository data.
+**Next, we are going to "accidentally" remove the green page commit so we can learn how to retrieve it via Git's internal repository data**.
 
 ```console
 $ git log --oneline
@@ -442,13 +446,13 @@ e1bc771 add a rainbow to crazy.html
 6a442fc Create index page for the message
 ```
 
-This moves the checked-out commit backward by one snapshot, along with the new-pages pointer. Note that git status tells us that we have nothing to commit, since the --hard flag obliterated (remove) any changes in the working directory. And of course, the git log output shows that the new-pages branch no longer contains the green commit.
+**This moves the checked-out commit backward by one snapshot, along with the new-pages pointer**. Note that git status tells us that we have nothing to commit, since the --hard flag obliterated (remove) any changes in the working directory. And of course, the git log output shows that the new-pages branch no longer contains the green commit.
 
-This behavior is slightly different from the reset we used in the interactive rebase: this time the branch: this time the branch moved with the new HEAD. Since we were on (no branch) during the rebase, there was no branch tip to move. However, in general, git reset is used to move branch tips around and optionally alter the working directory via one of its many flags. (e.g. --mixed or --hard).
+**This behavior is slightly different from the reset we used in the interactive rebase: this time the branch moved with the new HEAD**. Since we were on (no branch) during the rebase, there was no branch tip to move. However, in general, git reset is used to move branch tips around and optionally alter the working directory via one of its many flags. (e.g. --mixed or --hard).
 
 ![Screen Shot 2020-05-31 at 18 57 25](https://user-images.githubusercontent.com/24994818/83365813-9afa9700-a370-11ea-8592-0ecb23015250.png)
 
-The commit that we removed from the branch is now a dangling commit. Dangling commits are those that cannot be reached from any branch and are thus in danger of being lost forever.
+**The commit that we removed from the branch is now a dangling commit**. Dangling commits are those that cannot be reached from any branch and are thus in danger of being lost forever.
 
 
 # 	* [Open the Reflog](https://github.com/c4arl0s/7RewritingHistoryRysGitTutorial#7-rewriting-history-rys-git-tutorial---content)
@@ -599,7 +603,7 @@ Turn off this advice by setting config variable advice.detachedHead to false
 HEAD is now at d417237 Add green page
 ```
 
-This puts us in a detached HEAD state, which means our HEAD is no longer on the tip of a branch. We are actually in the opposite situation as we were in [Undoing Changes]() when we checked our a commit before the branch tip. Now, we are looking at a commit after the tip of the branch, but we still have a detached HEAD:
+**This puts us in a detached HEAD state, which means our HEAD is no longer on the tip of a branch**. We are actually in the opposite situation as we were in [Undoing Changes]() when we checked our a commit before the branch tip. Now, we are looking at a commit after the tip of the branch, but we still have a detached HEAD:
 
 ![Screen Shot 2020-06-01 at 17 49 41](https://user-images.githubusercontent.com/24994818/83462250-58988f00-a430-11ea-8d1d-c476cb41dcf4.png)
 
@@ -846,3 +850,16 @@ $ git log --stat
 ```
 Include extra information about altered files in the log output.
 
+# [Own Experiences](https://github.com/c4arl0s/7RewritingHistory#own-experiences-using)
+
+# 1. [Revive the lost commit](https://github.com/c4arl0s/7RewritingHistory#own-experiences-using)
+
+I used to do `git reset HEAD~` to include insignificant changes in the last commit. But after including those changes, I did included important changes. These important changes were not good, so I was losing my functional version of the project. To revive the commit you have to do this:
+
+1. `git reflog`
+2. Look for the commit you remember have the functional version.
+3. go to the commit with the functional version: `git checkout <commitWithFuncionalVersion>`
+4. Then: `git checkout -b functionalBranch`
+5. Now: go back to the main branch: `git checkout main`.
+6. Finally merge the functional branch: `git merge functionalBrancg`
+7. Remember: with git you don't miss any information.
